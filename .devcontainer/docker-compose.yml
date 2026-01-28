@@ -26,6 +26,7 @@ services:
       - 3306:3306
     volumes:
       - ../sql:/docker-entrypoint-initdb.d
+      - mysql_data:/var/lib/mysql  # Add this line
     
   # flyway
   flyway:
@@ -58,3 +59,6 @@ services:
       - ./apache-virtualhost.conf:/etc/apache2/sites-enabled/00-default.conf
       - ./php.ini:/usr/local/etc/php/conf.d/php.ini
       - ../:/var/www/html
+
+volumes:
+  mysql_data:
