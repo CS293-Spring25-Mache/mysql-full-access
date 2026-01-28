@@ -4,7 +4,7 @@ services:
   development:
     build: 
       context: .
-      dockerfile: .
+      dockerfile: Dockerfile
     environment:
       - FLYWAY_URL=jdbc:mysql://${DATABASE_HOST}/${DATABASE_DB}
       - FLYWAY_USER=${DATABASE_USER}
@@ -26,7 +26,6 @@ services:
       - 3306:3306
     volumes:
       - ../sql:/docker-entrypoint-initdb.d
-      - mysql-data:/var/lib/mysql  # This line saves your data
     
   # flyway
   flyway:
@@ -59,5 +58,3 @@ services:
       - ./apache-virtualhost.conf:/etc/apache2/sites-enabled/00-default.conf
       - ./php.ini:/usr/local/etc/php/conf.d/php.ini
       - ../:/var/www/html
-volumes:
-  mysql-data:
