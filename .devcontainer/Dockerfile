@@ -12,6 +12,7 @@ RUN apt install -y httpie default-mysql-client
 WORKDIR /usr/local
 RUN wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/8.0.0-beta1/flyway-commandline-8.0.0-beta1-linux-x64.tar.gz \
  | tar xvz \
+ && chmod +x /usr/local/flyway-8.0.0-beta1/flyway \
  && ln -s /usr/local/flyway-8.0.0-beta1/flyway /usr/local/bin/flyway
 WORKDIR ~
 ENTRYPOINT ["/bin/bash"]
